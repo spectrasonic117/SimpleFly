@@ -31,7 +31,7 @@ public class FlyTabCompleter implements TabCompleter {
             // Add online player names to suggestions
             completions.addAll(Bukkit.getOnlinePlayers().stream()
                     .map(Player::getName)
-                    .collect(Collectors.toList()));
+                    .toList());
 
             // Filter completions based on the current input
             return completions.stream()

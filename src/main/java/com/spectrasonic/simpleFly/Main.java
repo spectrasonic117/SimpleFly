@@ -7,6 +7,8 @@ import com.spectrasonic.simpleFly.utils.MessageUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Objects;
+
 /**
  * Main class for the Fly Plugin.
  * Initializes commands and listeners.
@@ -30,8 +32,8 @@ public class Main extends JavaPlugin {
      * Registers the Fly command and its TabCompleter.
      */
     private void registerCommands() {
-        getCommand("fly").setExecutor(new FlyCommand(this));
-        getCommand("fly").setTabCompleter(new FlyTabCompleter());
+        Objects.requireNonNull(getCommand("fly")).setExecutor(new FlyCommand(this));
+        Objects.requireNonNull(getCommand("fly")).setTabCompleter(new FlyTabCompleter());
     }
 
     /**

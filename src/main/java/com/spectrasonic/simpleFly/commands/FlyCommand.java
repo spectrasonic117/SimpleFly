@@ -2,20 +2,25 @@ package com.spectrasonic.simpleFly.commands;
 
 import com.spectrasonic.simpleFly.Main;
 import com.spectrasonic.simpleFly.utils.MessageUtils;
-import lombok.RequiredArgsConstructor;
+//import lombok.RequiredArgsConstructor;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class FlyCommand implements CommandExecutor {
 
     private final Main plugin;
 
+    public FlyCommand(Main plugin) {
+        this.plugin = plugin;
+    }
+
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String @NotNull [] args) {
         // Permitir que todos los jugadores usen "/fly version"
         if (args.length > 0 && args[0].equalsIgnoreCase("version")) {
             MessageUtils.sendMessage(sender, "Version: &b%s", plugin.getDescription().getVersion());
@@ -36,15 +41,14 @@ public class FlyCommand implements CommandExecutor {
                 MessageUtils.sendMessage(sender, "&cThis command can only be used by players.");
             }
         } else {
-            switch (args[0].toLowerCase()) {
-                case "all" -> toggleFlyForAll(sender);
-                default -> {
-                    Player target = Bukkit.getPlayer(args[0]);
-                    if (target != null) {
-                        toggleFly(target);
-                    } else {
-                        MessageUtils.sendMessage(sender, "&cPlayer %s is not online.", args[0]);
-                    }
+            if (args[0].equalsIgnoreCase("all")) {
+                toggleFlyForAll(sender);
+            } else {
+                Player target = Bukkit.getPlayer(args[0]);
+                if (target != null) {
+                    toggleFly(target);
+                } else {
+                    MessageUtils.sendMessage(sender, "&cPlayer %s is not online.", args[0]);
                 }
             }
         }
