@@ -58,11 +58,11 @@ public class FlyCommand implements CommandExecutor {
     private void toggleFly(Player player) {
         boolean canFly = !player.getAllowFlight();
         player.setAllowFlight(canFly);
-        MessageUtils.sendMessage(player, "&6Fly mode has been %s.", canFly ? "enabled" : "disabled");
+        MessageUtils.sendMessage(player, "Fly mode is %s.", canFly ? "&aON" : "&cOFF");
     }
 
     private void toggleFlyForAll(CommandSender sender) {
         Bukkit.getOnlinePlayers().forEach(this::toggleFly);
-        MessageUtils.sendMessage(sender, "&6Fly mode has been changed for all players.");
+        MessageUtils.sendMessage(sender, "Fly mode has been changed for all players.");
     }
 }

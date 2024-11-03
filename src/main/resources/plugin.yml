@@ -3,7 +3,7 @@ version: '1.0.0'
 main: com.spectrasonic.simpleFly.Main
 api-version: '1.21'
 prefix: [ SimpleFly ]
-authors: Spectrasonic
+authors: [ Spectrasonic ]
 description: Grant Fly permissions to player
 commands:
   fly:
