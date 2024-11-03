@@ -1,0 +1,15 @@
+name: SimpleFly
+version: '1.0.0'
+main: com.spectrasonic.simpleFly.Main
+api-version: '1.21'
+prefix: [ SimpleFly ]
+authors: Spectrasonic
+description: Grant Fly permissions to player
+commands:
+  fly:
+    description: Toggle flight mode for players.
+    usage: /fly [player|all|version]
+permissions:
+  simplefly.fly.use:
+    description: Permiso para usar el comando /fly. Solo para operadores.
+    default: op
